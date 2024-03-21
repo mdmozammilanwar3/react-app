@@ -1,0 +1,14 @@
+main {
+    height: 100vh !important;
+    max-height : 100vh;
+}
+
+.form-wrapper {
+    height: auto;
+}
+
+@media (max-width: 992px) {
+    main {
+        height: 100%;
+    }
+}

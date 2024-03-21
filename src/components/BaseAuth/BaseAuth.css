@@ -1,0 +1,21 @@
+.auth-wrapper {
+    width: 85%;
+    box-shadow: 0 0 20px #333;
+}
+
+.bg-container, .form-container {
+    width: 50%;
+    flex-shrink: 0 !important;
+    flex-grow: 1 !important;
+}
+
+@media (max-width: 992px) {
+    .auth-wrapper {
+        width: 100%;
+    }
+
+    .form-bg, .form-container {
+        max-height: unset;
+        width: 100%;
+    }
+}
