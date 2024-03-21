@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
-const EmailIdField = ({ label, placeholder }) => {
+const EmailIdField = ({ label, placeholder, onBlurHandler: setEmail }) => {
+    const blurHandler = (e) => {
+        setEmail(e.target.value);
+    }
+
     return (
         <div className='mb-3'>
             <label
@@ -14,6 +18,7 @@ const EmailIdField = ({ label, placeholder }) => {
                 placeholder={placeholder}
                 className='form-control border-black py-2'
                 id={label + 'field'}
+                onBlur={blurHandler}
             />
         </div>
     );

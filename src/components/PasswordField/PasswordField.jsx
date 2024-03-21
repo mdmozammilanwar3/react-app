@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
-const PasswordField = ({ label, placeholder }) => {
+const PasswordField = ({ label, placeholder, onBlurHandler: setPassword }) => {
+    const blurHandler = (e) => {
+        setPassword(e.target.value);
+    }
+
     return (
         <div className='mb-3'>
             <label
@@ -14,6 +18,7 @@ const PasswordField = ({ label, placeholder }) => {
                 placeholder={placeholder}
                 className='form-control border-black py-2'
                 id={label + 'field'}
+                onBlur={blurHandler}
             />
         </div>
     );
