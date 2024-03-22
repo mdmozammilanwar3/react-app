@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { getProductsAxios } from '../../axios/axios';
+import Swal from 'sweetalert2'
 
 const Products = () => {
     const staticImage = 'https://images.pexels.com/photos/4465124/pexels-photo-4465124.jpeg?auto=compress&cs=tinysrgb&w=600';
@@ -19,6 +20,11 @@ const Products = () => {
     };
 
     const deleteSuccessHandler = (id) => {
+        Swal.fire({
+            title: "Deleted!",
+            text: "Product has been deleted.",
+            icon: "success"
+          });
         const newProducts = products.filter((product) => product._id !== id);
         setProducts(() => newProducts);
     };

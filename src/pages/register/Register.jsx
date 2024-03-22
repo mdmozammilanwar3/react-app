@@ -9,19 +9,24 @@ import BaseAuth from '../../components/BaseAuth/BaseAuth';
 import DarkButton from '../../components/DarkButton/DarkButton';
 import  { userAxios } from '../../axios/axios';
 import './Register.css';
+import { toast } from 'react-toastify'; // Import toast
+import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
 const Register = () => {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
+    
     const sendUserData = async () => {
-        userAxios('register', { email, password, confirmPassword }, successHandler);
+       userAxios('register', { email, password, confirmPassword }, successHandler);
     }
 
     const successHandler = () => {
         localStorage.setItem('email', email);
+        toast.success('Registration successful!', {
+            autoClose: 3000, // Close after 3 seconds
+        });
         navigate('/verify');
     };
 

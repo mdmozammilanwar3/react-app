@@ -8,6 +8,8 @@ import BaseAuth from "../../components/BaseAuth/BaseAuth";
 import DarkButton from "../../components/DarkButton/DarkButton";
 import  { userAxios } from '../../axios/axios';
 import './Login.css';
+import { toast } from 'react-toastify'; // Import toast
+import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
 
 const Login = () => {
     const navigate = useNavigate();
@@ -21,6 +23,9 @@ const Login = () => {
 
     const successHandler = (data) => {
         localStorage.setItem('token', data.access_token);
+        toast.success('Login successful!', {
+            autoClose: 3000, // Close after 3 seconds
+        });
         navigate('/products');
     };
 

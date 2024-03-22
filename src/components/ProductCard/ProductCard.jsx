@@ -3,7 +3,11 @@
 
 import { useEffect, useState } from 'react';
 import { editProductsAxios, deleteProductsAxios, createProductsAxios } from '../../axios/axios';
-
+import { toast } from 'react-toastify'; // Import toast
+import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
+import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2/dist/sweetalert2.js'
+// import 'sweetalert2/src/sweetalert2.scss'
 const ProductCard = ({ productData, getProducts, onDeleteProduct }) => {
     const token = localStorage.getItem('token');
     const [editMode, setEditMode] = useState(false);
@@ -24,6 +28,9 @@ const ProductCard = ({ productData, getProducts, onDeleteProduct }) => {
     }
 
     const createSuccessHandler = () => {
+        toast.success('Product created successfully!', {
+            autoClose: 3000, // Close after 3 seconds
+        });
         setEditMode(false);
         getProducts();
     }
@@ -37,10 +44,28 @@ const ProductCard = ({ productData, getProducts, onDeleteProduct }) => {
     };
 
     const editSuccessHandler = () => {
+        toast.success('Product updated successfully!', {
+            autoClose: 3000, // Close after 3 seconds
+        });
         setEditMode(false);
     };
-
+    const swal = () =>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              deleteProduct();
+            }
+          });
+    }
     const deleteProduct = () => {
+
         deleteProductsAxios(`product/${productData._id}`, token, onDeleteProduct);
     };
 
@@ -117,7 +142,7 @@ const ProductCard = ({ productData, getProducts, onDeleteProduct }) => {
                                 <button
                                     className='btn btn-danger'
                                     type='button'
-                                    onClick={deleteProduct}
+                                    onClick={swal}
                                 >
                                     Delete
                                 </button>

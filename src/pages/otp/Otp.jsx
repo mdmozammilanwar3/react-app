@@ -9,7 +9,8 @@ import DarkButton from "../../components/DarkButton/DarkButton";
 import './Otp.css';
 import OtpField from "../../components/OtpField/OtpField";
 import  { userAxios } from '../../axios/axios';
-
+import { toast } from 'react-toastify'; // Import toast
+import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
 
 const Otp = () => {
     const navigate = useNavigate();
@@ -23,6 +24,9 @@ const Otp = () => {
     }
 
     const successHandler = () => {
+        toast.success('Email verification successful!', {
+            autoClose: 3000, // Close after 3 seconds
+        });
         navigate('/login');
     };
 
