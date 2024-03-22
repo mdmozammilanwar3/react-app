@@ -9,7 +9,6 @@ import BaseAuth from '../../components/BaseAuth/BaseAuth';
 import DarkButton from '../../components/DarkButton/DarkButton';
 import  { userAxios } from '../../axios/axios';
 import './Register.css';
-
 const Register = () => {
     const navigate = useNavigate();
 
@@ -62,6 +61,7 @@ const Register = () => {
                                         type='submit'
                                         content='Register'
                                     />
+                                    
                                     <div className='mt-4 text-muted text-center'>
                                         Already have an account?
                                         <Link
@@ -74,7 +74,9 @@ const Register = () => {
                                 </form>
                             </div>
                         </div>
+                        
                     </BaseAuth>
+                    
                 }
             </div>
         </main>

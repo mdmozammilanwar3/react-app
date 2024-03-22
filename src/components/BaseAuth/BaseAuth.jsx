@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import formBackground from './../../assets/main-background.webp';
+import formBackground from './../../assets/main-background.png';
 import './BaseAuth.css';
 
 const BaseAuth = (props) => {
